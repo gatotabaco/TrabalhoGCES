@@ -12,7 +12,9 @@ services:
     ports:
       - "5432:5432"
   back:
-    build: .
+    build:
+      context: ./library_back
+      dockerfile: Dockerfile
     command: python library_back/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
