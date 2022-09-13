@@ -2,7 +2,9 @@ from dataclasses import dataclass
 import unittest
 from .models import Book
 from .serializers import BookSerializer
+import pytest
 
+pytestmark = pytest.mark.django_db
 
 class BookTests(unittest.TestCase):
     def setUp(self) -> None:
