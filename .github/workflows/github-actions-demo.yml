@@ -19,3 +19,14 @@ jobs:
       run: docker-compose run back python manage.py makemigrations
     - name: Migrate
       run: docker-compose run back python manage.py migrate
+  tests:
+    runs-on: ubuntu-latest
+    name: "Tests"
+    steps:
+    - name: Checkout v3
+      uses: actions/checkout@v3
+    - name: Back test
+      run: docker-compose run back python -m pytest accounts books
+    - name: Front test
+      run: docker-compose run front npm run test
+  
