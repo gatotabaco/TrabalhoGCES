@@ -14,7 +14,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Run docker
-      run: docker-compose up --build
+      run: docker-compose build --no-cache
     - name: Create database tables
       run: docker-compose run back python manage.py makemigrations
     - name: Create migrations
