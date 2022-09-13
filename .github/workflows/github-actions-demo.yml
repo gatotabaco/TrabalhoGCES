@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     name: "Build"
     steps:
-    - name: Checkout code
+    - name: Checkout v3
       uses: actions/checkout@v3
-    - name: Run docker
+    - name: Build docker
       run: docker-compose build --no-cache
-    - name: Create database tables
+    - name: Make migrations
       run: docker-compose run back python manage.py makemigrations
-    - name: Create migrations
+    - name: Migrate
       run: docker-compose run back python manage.py migrate
