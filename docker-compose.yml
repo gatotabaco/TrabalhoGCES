@@ -34,4 +34,17 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - back
+  nginx:
+    restart: always
+    container_name: gces_nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - back
+      - front
+    links:
+      - front
